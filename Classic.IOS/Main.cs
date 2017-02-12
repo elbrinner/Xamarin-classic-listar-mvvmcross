@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Classic.IOS
+namespace MvvmCrossIos
 {
     public class Application
     {

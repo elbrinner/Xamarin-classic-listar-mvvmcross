@@ -46,6 +46,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchFastDev>true</MtouchFastDev>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -89,16 +90,26 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\FirstView.cs" />
-    <Compile Include="Views\FirstView.designer.cs" />
+    <Compile Include="Views\MainView.cs" />
+    <Compile Include="Views\MainView.designer.cs" />
     <Content Include="AppDelegate.cs.txt" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <Content Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <InterfaceDefinition Include="Views\FirstView.xib" />
+    <Compile Include="Platform\CustomPresenter.cs" />
+    <Compile Include="Platform\ViewContainer.cs" />
+    <Compile Include="Views\DataSource\SimpleDynicamicTableViewSource.cs" />
+    <Compile Include="Views\Cell\MovieCell.cs" />
+    <Compile Include="Views\Cell\MovieCell.designer.cs">
+      <DependentUpon>MovieCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Detail\DetailView.cs" />
+    <Compile Include="Views\Detail\DetailView.designer.cs">
+      <DependentUpon>DetailView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Platform\ImageDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -140,6 +151,18 @@
       <Project>{90cf4f71-f232-4b31-b280-23dfb78e9d25}</Project>
       <Name>Classic.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Views\DataSource\" />
+    <Folder Include="Views\Cell\" />
+    <Folder Include="Views\Detail\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Views\MainView.storyboard" />
+    <InterfaceDefinition Include="Views\Cell\MovieCell.xib" />
+    <InterfaceDefinition Include="Views\Detail\DetailView.storyboard" />
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

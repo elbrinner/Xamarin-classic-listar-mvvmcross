@@ -43,6 +43,10 @@ namespace Classic.Core.ViewModels
         
 
         private IMvxCommand selectedItemCommand;
+
+        /// <summary>
+        /// commando a aplicar en la lista al seleccionar un elemento.
+        /// </summary>
         public IMvxCommand SelectedItemCommand
         {
             get
@@ -54,9 +58,14 @@ namespace Classic.Core.ViewModels
 
         }
 
+        /// <summary>
+        /// Navegación al otro ViewModel con el elemento de la lista seleccionado 
+        /// </summary>
+        /// <param name="item">Item seleccionado en la lista</param>
         private void ItemClick(ResultDto item)
         {
-            this.SelectedItem = item;  
+            //Navegamos y pasamos por parametro el item seleccionado
+            this.ShowViewModel<DetailViewModel>(item);
         }
 
         public ResultResponseDto ListData
@@ -73,19 +82,33 @@ namespace Classic.Core.ViewModels
             }
         }
 
+        /// <summary>
+        /// Al cargar el ViewModel entra por aqui.
+        /// </summary>
         public async void Init()
         {
+            //Llamaremos un servicio, usamos IsBusy a true
+            //para mostrar un indicador que algo se esta cargando en pantalla
             this.IsBusy = true;
             try
             {
+                //url del servicio
                 var url = new Uri(string.Format(CultureInfo.InvariantCulture, Classic.Contants.Config.baseUrl, Contants.Config.param1));
                 var cliente = new HttpClient();
+                //hacemos una petición get al servicio
                 var result = await cliente.GetAsync(url);
+                // Si la respuesta es correcta seguimos
                 if (result.IsSuccessStatusCode)
                 {
+                    //Recuperamos el contenido
                     string content = await result.Content.ReadAsStringAsync();
                     if (content != null)
                     {
+                        /*
+                        Deserializamos los datos y asignamos a nuestra propiedad publica.
+                        Observacion: Aqui lo ideal seria crea una entidad y 
+                        un mapper para transformar los datos y tratar.
+                        */
                         this.ListData = JsonConvert.DeserializeObject<ResultResponseDto>(content);
                     }
 
@@ -98,6 +121,7 @@ namespace Classic.Core.ViewModels
             }
             finally
             {
+                //Ponemos a false quitando el elemento de carga en la vista.
                 this.IsBusy = false;
             }
 

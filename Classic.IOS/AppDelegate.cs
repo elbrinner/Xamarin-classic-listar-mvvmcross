@@ -1,12 +1,15 @@
 ﻿using Foundation;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.iOS.Platform;
+using MvvmCross.Platform;
 using UIKit;
 
-namespace Classic.IOS
+namespace MvvmCrossIos
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
     [Register("AppDelegate")]
-    public class AppDelegate : UIApplicationDelegate
+    public class AppDelegate : MvxApplicationDelegate
     {
         // class-level declarations
 
@@ -18,14 +21,18 @@ namespace Classic.IOS
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
 
-            // If you have defined a root view controller, set it here:
-            // Window.RootViewController = myViewController;
+            //Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            // make the window visible
-            Window.MakeKeyAndVisible();
+            var setup = new Setup(this, Window);
+            setup.Initialize();
+
+            var startup = Mvx.Resolve<IMvxAppStart>();
+            startup.Start();
+
+            //Window.MakeKeyAndVisible();
 
             return true;
         }

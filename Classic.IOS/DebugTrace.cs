@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using MvvmCross.Platform.Platform;
 
-namespace Classic.IOS
+namespace MvvmCrossIos
 {
     public class DebugTrace : IMvxTrace
     {

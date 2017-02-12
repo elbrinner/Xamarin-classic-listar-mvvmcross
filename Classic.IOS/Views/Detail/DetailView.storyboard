@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="5">
+    <dependencies>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View-->
+        <scene sceneID="4">
+            <objects>
+                <viewController storyboardIdentifier="DetailView" id="5" customClass="DetailView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ5-Ys-frW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="188"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mQ5-Ys-frW" secondAttribute="height" multiplier="375:188" id="8Wd-z9-dRD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpp-ui-VPX">
+                                <rect key="frame" x="8" y="216" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dpk-Pq-1Dl">
+                                <rect key="frame" x="8" y="245" width="359" height="414"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mQ5-Ys-frW" secondAttribute="trailing" id="KB1-w3-0wg"/>
+                            <constraint firstItem="Dpk-Pq-1Dl" firstAttribute="leading" secondItem="Tpp-ui-VPX" secondAttribute="leading" id="OcT-F8-k73"/>
+                            <constraint firstItem="Tpp-ui-VPX" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="8" id="SoG-Th-DzI"/>
+                            <constraint firstItem="Dpk-Pq-1Dl" firstAttribute="trailing" secondItem="Tpp-ui-VPX" secondAttribute="trailing" id="Xly-6T-lsc"/>
+                            <constraint firstItem="mQ5-Ys-frW" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="iTo-zY-wpl"/>
+                            <constraint firstItem="Dpk-Pq-1Dl" firstAttribute="top" secondItem="Tpp-ui-VPX" secondAttribute="bottom" constant="8" id="igy-aW-yU2"/>
+                            <constraint firstItem="Tpp-ui-VPX" firstAttribute="top" secondItem="mQ5-Ys-frW" secondAttribute="bottom" constant="8" id="jWc-pr-Cg7"/>
+                            <constraint firstItem="3" firstAttribute="top" secondItem="Dpk-Pq-1Dl" secondAttribute="bottom" constant="8" id="l11-Lw-brD"/>
+                            <constraint firstAttribute="trailing" secondItem="Tpp-ui-VPX" secondAttribute="trailing" constant="8" id="l8S-Jf-bii"/>
+                            <constraint firstItem="mQ5-Ys-frW" firstAttribute="top" secondItem="2" secondAttribute="bottom" id="z4O-5n-YV9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descLabel" destination="Dpk-Pq-1Dl" id="name-outlet-Dpk-Pq-1Dl"/>
+                        <outlet property="imageView" destination="mQ5-Ys-frW" id="name-outlet-mQ5-Ys-frW"/>
+                        <outlet property="titleLabel" destination="Tpp-ui-VPX" id="name-outlet-Tpp-ui-VPX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119.2" y="-124.5877"/>
+        </scene>
+    </scenes>
+</document>

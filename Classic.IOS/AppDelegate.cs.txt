@@ -4,7 +4,7 @@ using MvvmCross.Platform;
 using Foundation;
 using UIKit;
 
-namespace Classic.IOS
+namespace MvvmCrossIos
 {
     [Register("AppDelegate")]
     public partial class AppDelegate : MvxApplicationDelegate

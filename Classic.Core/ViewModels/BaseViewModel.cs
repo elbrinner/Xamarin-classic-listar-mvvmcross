@@ -11,6 +11,10 @@ namespace Classic.Core.ViewModels
     {
         private bool isBusy;
 
+        /// <summary>
+        /// Indicado de inicio y fin de las llamadas al servicio.
+        /// Ponemos a true antes de llamar un servicio y a false despúes de la llamada
+        /// </summary>
         public bool IsBusy
         {
             get
@@ -25,5 +29,7 @@ namespace Classic.Core.ViewModels
                 
             }
         }
+
+
     }
 }
