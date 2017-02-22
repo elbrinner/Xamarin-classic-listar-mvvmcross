@@ -20,10 +20,6 @@ namespace Classic.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imageView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel titleLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -31,11 +27,6 @@ namespace Classic.IOS
             if (descLabel != null) {
                 descLabel.Dispose ();
                 descLabel = null;
-            }
-
-            if (imageView != null) {
-                imageView.Dispose ();
-                imageView = null;
             }
 
             if (titleLabel != null) {

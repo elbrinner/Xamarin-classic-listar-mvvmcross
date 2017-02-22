@@ -56,9 +56,7 @@ namespace Classic.IOS
 
         private void Initialize()
         {
-            this.View.LayoutIfNeeded();
         }
-
 
         private void SetBindings()
         {

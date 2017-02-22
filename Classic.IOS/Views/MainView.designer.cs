@@ -16,10 +16,19 @@ namespace MvvmCrossIos
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIActivityIndicatorView activityIndicator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView tableView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (activityIndicator != null) {
+                activityIndicator.Dispose ();
+                activityIndicator = null;
+            }
+
             if (tableView != null) {
                 tableView.Dispose ();
                 tableView = null;

@@ -40,7 +40,6 @@ namespace Bankia.IOS.SpecificPlatform
             set
             {
                 this.mainNC = value;
-                this.MainNC.SetNavigationBarHidden(true, false);
             }
         }
 
@@ -100,7 +99,17 @@ namespace Bankia.IOS.SpecificPlatform
         /// <param name="view">La vista.</param>
         public override void Show(MvvmCross.iOS.Views.IMvxIosView view)
         {
-            this.ShowIphone(view);
+            if(this.mainNC.ViewControllers.Count() == 0)
+            {
+                UIViewController[] vCs = new UIViewController[1] { (UIKit.UIViewController)view };
+                this.MainNC.SetViewControllers(vCs, false);
+            }
+            else
+            { 
+                this.mainNC.PushViewController((UIKit.UIViewController)view, true);
+            }
+        
+            base.Show(view);
         }
 
         /// <summary>
@@ -112,18 +121,6 @@ namespace Bankia.IOS.SpecificPlatform
             base.Show(request);
         }
 
-
-        /// <summary>
-        /// Crea un navigationController.
-        /// Se implementa para poder llamar a esta funcionalidad desde fuera de la clase.
-        /// </summary>
-        /// <returns>The navigation controller from out.</returns>
-        /// <param name="viewController">View controller.</param>
-        public UINavigationController CreateNavigationControllerFromOut(UIViewController viewController)
-        {
-            return this.CreateNavigationController(viewController);
-        }
-
         /// <summary>
         /// Se llama al iniciar 
         /// </summary>
@@ -133,28 +130,5 @@ namespace Bankia.IOS.SpecificPlatform
             base.ShowFirstView(viewController);
         }
 
-        /// <summary>
-        /// Creates the navigation controller.
-        /// </summary>
-        /// <returns>The navigation controller.</returns>
-        /// <param name="viewController">View controller.</param>
-        protected override UINavigationController CreateNavigationController(UIViewController viewController)
-        {
-            // Cambia el color de todas las barras de estado de la aplicación.
-            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(185, 200, 0, 1);
-            return base.CreateNavigationController(viewController);
-        }
-
-        /// <summary>
-        /// Navegación en iPhone
-        /// </summary>
-        /// <param name="view">View.</param>
-        private void ShowIphone(MvvmCross.iOS.Views.IMvxIosView view)
-        {
-            this.mainNC.PushViewController((UIKit.UIViewController)view, true);
-
-
-            base.Show(view);
-        }
     }
 }

@@ -13,32 +13,35 @@ namespace MvvmCrossIos
     public partial class MainView : MvxViewController
     {
         private SimpleDynamicTableViewSource dataSource;
-        private ResultDto selectedItem;
+        private bool isBusy;
 
-        public MainView (IntPtr handle) : base (handle)
-        {
-        }
-
-        public ResultDto SelectedItem
+        /// <summary>
+        /// Indicado de inicio y fin de las llamadas al servicio.
+        /// Ponemos a true antes de llamar un servicio y a false despúes de la llamada
+        /// </summary>
+        public bool IsBusy
         {
             get
             {
-                return selectedItem;
+                return this.isBusy;
             }
 
             set
             {
-                if(value != null)
+                this.isBusy = value;
+                if(this.isBusy)
                 {
-                    selectedItem = value;
-
-                    //Ir al detalle
-                    DetailView detailView = (DetailView)(UIStoryboard.FromName("DetailView",null).InstantiateViewController("DetailView"));
-                    detailView.ViewModel = this.ViewModel;
-                    this.NavigationController.PushViewController(detailView, true);
+                    this.activityIndicator.Hidden = false;
                 }
-
+                else
+                { 
+                    this.activityIndicator.Hidden = true;
+                }
             }
+        }
+
+        public MainView (IntPtr handle) : base (handle)
+        {
         }
 
         public override void ViewDidLoad()
@@ -49,7 +52,6 @@ namespace MvvmCrossIos
             this.Initialize();
             this.SetDataSources();
             this.SetBindings();
-            this.I18n();
         }
 
         private void Initialize()
@@ -74,10 +76,6 @@ namespace MvvmCrossIos
         {
             var set = this.CreateBindingSet<MainView, MainViewModel> ();
 
-            set.Bind(this)
-                .For(v => v.SelectedItem)
-                .To(vm => vm.SelectedItem);
-
             set.Bind(this.dataSource)
                 .For(s => s.SelectionChangedCommand)
                 .To(vm => vm.SelectedItemCommand);
@@ -86,15 +84,11 @@ namespace MvvmCrossIos
                 .For(s => s.ItemsSource)
                 .To(vm => vm.ListData.results);
 
+            set.Bind(this)
+                .For(s => s.IsBusy)
+               .To(vm => vm.IsBusy);
+            
             set.Apply();
-        }
-
-
-        /// <summary>
-        /// Internacionaliza los textos de la pantalla.
-        /// </summary>
-        private void I18n()
-        {
         }
     }
 }

@@ -26,7 +26,6 @@ namespace Bankia.IOS.Generic
             return this.TableView.DequeueReusableCell(this.CellType.Name, indexPath);
         }
 
-
     }
 }
 
