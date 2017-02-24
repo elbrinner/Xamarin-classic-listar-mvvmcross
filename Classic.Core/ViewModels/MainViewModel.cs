@@ -33,6 +33,7 @@ namespace Classic.Core.ViewModels
                 if (value != null)
                 {
                     selectedItem = value;
+                    this.ShowViewModel<DetailViewModel>(value);
                 }
 
                 this.RaisePropertyChanged(() => this.SelectedItem);

@@ -25,7 +25,7 @@ namespace Classic.Core.ViewModels
             set
             {
                     this.isBusy = value;
-                    this.RaisePropertyChanged(() => this.IsBusy);
+                     this.RaisePropertyChanged(() => this.IsBusy);
                 
             }
         }

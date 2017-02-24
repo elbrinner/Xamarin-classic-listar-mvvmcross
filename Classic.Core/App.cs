@@ -11,7 +11,7 @@ namespace Classic.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart < ViewModels.MainViewModel>();
+            RegisterAppStart<ViewModels.MainViewModel>();
         }
     }
 }

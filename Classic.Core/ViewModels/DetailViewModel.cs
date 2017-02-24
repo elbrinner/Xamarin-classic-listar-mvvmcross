@@ -1,4 +1,5 @@
 ﻿using Classic.Dtos;
+using MvvmCross.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,22 @@ namespace Classic.Core.ViewModels
     public class DetailViewModel : BaseViewModel
     {
         private ResultDto selectedItem;
-        public string Image = "https://cdn.pixabay.com/user/2015/01/20/20-56-42-330_250x250.jpg";
+        public string image;
+
+        public string Image
+        {
+            get
+            {
+                return this.image;
+            }
+
+            set
+            {
+                this.image = value;
+                this.RaisePropertyChanged(() => this.Image);
+
+            }
+        }
 
         public ResultDto SelectedItem
         {
@@ -31,6 +47,29 @@ namespace Classic.Core.ViewModels
         public void Init(ResultDto seleted)
         {
             this.SelectedItem = seleted;
+            this.Image = seleted.backdrop_path == null ? Contants.Config.imgBig + seleted.poster_path : Contants.Config.imgBig + seleted.backdrop_path ;
+
         }
+          private IMvxCommand backCommand;
+
+        /// <summary>
+        /// commando a aplicar en la lista al seleccionar un elemento.
+        /// </summary>
+        public IMvxCommand BackCommand
+        {
+            get
+            {
+                backCommand = backCommand ?? new MvxCommand(NavegacionBack);
+
+                return backCommand;
+            }
+
+        }
+
+        private void NavegacionBack()
+        {
+            this.ShowViewModel<MainViewModel>();
+        }
+    
     }
 }
